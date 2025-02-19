@@ -1,0 +1,19 @@
+(library
+ (name utils)
+ (modules Utils)
+ (libraries lwt.unix uutf))
+
+(library
+ (name network)
+ (modules Network)          
+ (libraries lwt lwt.unix))
+
+(library
+ (name message)
+ (modules Message)
+ (libraries lwt.unix network utils))
+
+(library
+ (name chat)
+ (modules Chat)
+ (libraries lwt.unix lwt_ppx message network utils))
