@@ -11,7 +11,7 @@ let start_server addr port =
         Printf.printf "Client connected!\n%!";
       
       Chat.start_chat client_sock >>= fun () ->
-        (* Lwt_unix.close client_sock >>= fun () -> *)
+        Lwt_unix.close client_sock >>= fun () ->
           Printf.printf "Client disconnected!\n%!";
           accept_loop ()
     in
