@@ -5,7 +5,7 @@ module Network = struct
   let create_server_socket addr port =
     let sock = Lwt_unix.socket PF_INET SOCK_STREAM 0 in
     let sockaddr = ADDR_INET (addr, port) in
-    Lwt_unix.bind sock sockaddr >>= fun () -> ();
+    let _ = Lwt_unix.bind sock sockaddr in
     Lwt_unix.listen sock 1; (* Only one connection at a time *)
     Lwt.return sock
 
@@ -16,6 +16,6 @@ module Network = struct
   let connect_to_server addr port =
     let sock = Lwt_unix.socket PF_INET SOCK_STREAM 0 in
     let sockaddr = ADDR_INET (addr, port) in
-    Lwt_unix.connect sock sockaddr >>= fun () ->
+    let _ = Lwt_unix.connect sock sockaddr in
       Lwt.return sock
 end

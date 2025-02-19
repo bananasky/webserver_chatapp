@@ -16,4 +16,4 @@
 (library
  (name chat)
  (modules Chat)
- (libraries lwt.unix lwt_ppx message network utils))
+ (libraries lwt.unix message network utils))
